@@ -21,13 +21,10 @@
 		a{
 			color: #888888;
 			font-size: 2em;
+			text-decoration: none;
 		}
 		a:hover{
 			color: #FFFFFF;
-			font-size: 2em;
-		}
-		ul a{
-			text-decoration: none;
 		}
 		hr{
 			border:1px solid #222222;"
@@ -41,8 +38,15 @@
 			height: 40px;
 		}
 		footer p{
+			display: block;
 			margin: 0;
-			text-align: right;
+			float: left;
+		}
+		footer p a{
+			font-size: 1em;
+		}
+		footer p:nth-child(odd){
+			float: right;
 		}
 	</style>
 </head>
@@ -54,6 +58,7 @@
 	</ul>
 	<footer>
 		<hr>
+		<p><a href="https://github.com/Mxkxk/WebThingsFolder">https://github.com/Mxkxk/WebThingsFolder</a></p>
 		<p>23/02/2021</p>
 	</footer>
 </body>
