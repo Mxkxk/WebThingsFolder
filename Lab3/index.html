@@ -2,51 +2,43 @@
 <html lang="uk">
   <head>
     <meta charset="utf-8">
-    <title>Лабораторна №2</title>
+    <title>Лабораторна №3</title>
   </head>
   <body>
     <style>
+      *{
+        font-family: Courier;
+      }
       h1{
-        font-size: 24px;
         text-align: center;
       }
-      p{
-        font-size: 120%;
+      h2{
+        margin: 0;
       }
-      .a_bio:link{
-        color:#FF0000;
-      }
-      .a_bio:visited{
-        color:#880000; 
-      }
-      .a_ndays:link{
-        color:#FFFF00;
-      }
-      .a_ndays:visited{
-        color:#888800; 
-      }
-      .a_friends:link{
-        color:#FF00FF;
-      }
-      .a_friends:visited{
-        color:#660066;
-      }
-      .a_gallery:link{
-        color:#0000FF;
-      }
-      .a_gallery:visited{
-        color:#000088;
+      body{
+        background: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftexturs.ru%2Farchive%2Fpaper-3115.jpg&f=1&nofb=1);
       }
       .row {
         width: 100%;
       }
+      .col-1 {width: 8.33%;}
+      .col-2 {width: 16.66%;}
+      .col-3 {width: 25%;}
+      .col-4 {width: 33.33%;}
+      .col-5 {width: 41.66%;}
+      .col-6 {width: 50%;}
+      .col-7 {width: 58.33%;}
+      .col-8 {width: 66.66%;}
+      .col-9 {width: 75%;}
+      .col-10 {width: 83.33%;}
+      .col-11 {width: 91.66%;}
+      .col-12 {width: 100%;}
       /* Large devices */
-      @media (min-width: 1200px) {
+      @media (min-width: 992px) {
       .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
           float: left;
-          border: 1px solid green;
           box-sizing: border-box;
-          padding:0 1em;
+          padding: 1%;
         }
         .col-lg-1 {width: 8.33%;}
         .col-lg-2 {width: 16.66%;}
@@ -62,11 +54,11 @@
         .col-lg-12 {width: 100%;}
       }
       /* Medium devices */
-      @media (min-width: 992px) and (max-width: 1199px) {
+      @media (min-width: 768px) and (max-width: 992px) {
       .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
           float: left;
-          border: 1px solid black;
           box-sizing: border-box;
+          padding: 1%;
         }
         .col-md-1 {width: 8.33%;}
         .col-md-2 {width: 16.66%;}
@@ -81,16 +73,66 @@
         .col-md-11 {width: 91.66%;}
         .col-md-12 {width: 100%;}
       }
+      @media (max-width: 768px){
+      .col-sl-1, .col-sl-2, .col-sl-3, .col-sl-4, .col-sl-5, .col-sl-6, .col-sl-7, .col-sl-8, .col-sl-9, .col-sl-10, .col-sl-11, .col-sl-12 {
+          float: left;
+          box-sizing: border-box;
+          padding: 1%;
+        }
+        .col-sl-1 {width: 8.33%;}
+        .col-sl-2 {width: 16.66%;}
+        .col-sl-3 {width: 25%;}
+        .col-sl-4 {width: 33.33%;}
+        .col-sl-5 {width: 41.66%;}
+        .col-sl-6 {width: 50%;}
+        .col-sl-7 {width: 58.33%;}
+        .col-sl-8 {width: 66.66%;}
+        .col-sl-9 {width: 75%;}
+        .col-sl-10 {width: 83.33%;}
+        .col-sl-11 {width: 91.66%;}
+        .col-sl-12 {width: 100%;}
+      }
+      p{
+        padding: 0 5%;
+        clear: both;
+        font-weight: bold;
+      }
+      .text_info{
+        border: 2px solid black;
+        background: #AAAAAAAA;        
+      }
+      .text_title{
+        float: right;
+        background: #22222277;
+        border:2px solid black;
+        border-top: 2px;
+        border-right: 2px;
+        font-weight: bold;
+        padding: 0 10%;
+        margin:0 0 2% 0;
+      }
     </style>
     <div class="row">
-      <div class="col-lg-3 col-md-6"><p>Item 1</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 2</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 3</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 4</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 5</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 6</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 7</p></div>
-      <div class="col-lg-3 col-md-6"><p>Item 8</p></div>
+      <div class="col-lg-12 col-lmd-12 col-sl-12">       
+          <h1>Вакансії</h1></div>          
+      <div class="col-lg-4 col-md-6 col-sl-12">
+        <div class="text_info">
+          <div class="text_title"><h2>Водій</h2></div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quis atque, consequuntur fugiat suscipit aut porro nesciunt delectus vero, soluta, quas hic mollitia expedita impedit possimus eius sapiente sint ratione labore.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sl-12">
+        <div class="text_info">
+          <div class="text_title"><h2>Кур'єр</h2></div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quis atque, consequuntur fugiat suscipit aut porro nesciunt delectus vero, soluta, quas hic mollitia expedita impedit possimus eius sapiente sint ratione labore.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sl-12">
+        <div class="text_info">
+          <div class="text_title"><h2>Касир</h2></div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quis atque, consequuntur fugiat suscipit aut porro nesciunt delectus vero, soluta, quas hic mollitia expedita impedit possimus eius sapiente sint ratione labore.</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
