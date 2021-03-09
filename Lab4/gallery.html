@@ -5,17 +5,24 @@
 		<title>Галерея</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
-	<body>
+	<body class="row">
 		<h1>Галерея Федоряка Максима Олександровича</h1>
 		<p><a class="a_index" href="index.html">Назад на головну</a></p>
-		<h2>Мої зображення
-			<h3 class="title_img-offline--infolder">Зображення у цій папці</h3>
-			<img src="img1.jpg" alt="Кіт на фоні стіни 640 на 480">
+		<h2>Мої зображення</h2>
+		<div class="col-lg-4 col-md-6 col-sl-12">
+			<h3 class="title_img-offline--infolder">Зображення у цій папці
+				<img src="img1.jpg" alt="Кіт на фоні стіни 640 на 480">
+			</h3>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sl-12">
 			<h3 class="title_img-offline--outfolder">Зображення у папці
 				<img src="images/img1.jpg" alt="Дерева зимою на фоні неба 640 на 480">
-				<h3 class="title_img-online">Зображення онлайн</h3>
+			</h3>
+		</div>
+		<div class="col-lg-4 col-md-12 col-sl-12">
+			<h3 class="title_img-online">Зображення онлайн
 				<img src="https://loremflickr.com/1280/1024/magenta" alt="Об'єкт/и маджентового кольору 1280 на 1024">
 			</h3>
-		</h2>
+		</div>
 	</body>
 </html>
