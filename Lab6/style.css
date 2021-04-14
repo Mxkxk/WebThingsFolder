@@ -2,7 +2,7 @@ body{
 	background: #B16EF5;	
 }
 .custom-color{
-	color: #000;
+	color: #000!important;
 	background: #92E792;
 	border-color: #8FA966!important;
 }
