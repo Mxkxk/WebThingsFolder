@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Лабораторна робота №7</title>
+	</head>
+	<body>
+		<script>
+			function triangle(){
+				var degToRad = (deg) => deg*Math.PI/180;
+				var radToDeg = (rad) => rad*180/Math.PI;
+				var lhToAngle = (l, h) => radToDeg(Math.asin(l/h));
+				var laToHypotenuse = (l, a) => l/(Math.sin(degToRad(a)));
+				function logTriangle(T){
+					console.log("a = " + T.a.toFixed(3) + "\nb = " + T.b.toFixed(3) + "\nc = "+ T.c.toFixed(3) + "\nalpha = " + T.alpha.toFixed(3) + "\nbeta = " + T.beta.toFixed(3));
+					console.log("succes");
+				}
+				var trig = ["leg", "hypotenuse", "adjacent angle", "opposite angle", "angle"];
+				var Triangle = {leg:undefined, hypotenuse:undefined, "adjacent angle":undefined, "opposite angle":undefined, "angle":undefined};
+				var sT = {a:undefined, b:undefined, c:undefined, alpha:undefined, beta:undefined};
+				var error = "";
+				var solved = false;
+				for(var i = 0; i < arguments.length/2; i++){//перевірка числових значень
+					if(arguments[i*2] <= 0)error += "Uncorrect number values(must be >0)\n";
+				}
+				if(arguments.length != 4)error += "Uncorrect ammount of arguments\n";//перевірка кількості аргуметів
+				if(error.length == 0)
+				{
+					/////////////////////////////////////////////////////////
+					if(arguments[1] == arguments[3] && arguments[1] == "leg")
+					{
+						sT.a = arguments[0];
+						sT.b = arguments[2];
+						sT.c = Math.hypot(sT.a, sT.b);
+						sT.alpha = lhToAngle(sT.a, sT.c);
+						sT.beta = lhToAngle(sT.b, sT.c);
+						solved = true;
+					}
+					else
+					{					
+						var variables = 0;
+						for(var i = 0; i < arguments.length/2; i++)//пошук аргументів
+						{
+							for(var j = 0; j < trig.length; j++)
+							{
+								if(arguments[i*2+1] == trig[j] && Triangle[trig[j]] == undefined)
+								{
+									Triangle[trig[j]] = arguments[i*2];
+									variables++;
+									break;
+								}
+							}
+						}
+						if(variables < 2){
+							error += "Uncorrect types of variables\n";
+						} 
+						if(Triangle["leg"] != undefined && Triangle["hypotenuse"] != undefined){
+							if(Triangle["leg"] >= Triangle["hypotenuse"])error += "Leg value must be less, than hypotenuse\n";
+							else
+							{
+								sT.a = Triangle["leg"];
+								sT.c = Triangle["hypotenuse"];
+								sT.b = Math.sqrt(sT.c*sT.c - sT.a*sT.a);
+								sT.alpha = lhToAngle(sT.a, sT.c);
+								sT.beta = 90 - sT.alpha;
+								solved = true;
+							}
+						}
+						if(Triangle["leg"] != undefined && (Triangle["adjacent angle"] != undefined || Triangle["opposite angle"] != undefined)){
+							sT.a = Triangle["leg"];							
+							if(Triangle["adjacent angle"] >= 90)error += "Angle value must be less, than 90\n";
+							else
+							{
+								if(Triangle["adjacent angle"] != undefined)Triangle["opposite angle"] = 90 - Triangle["adjacent angle"];
+							}	
+							if(Triangle["opposite angle"] >= 90)error += (error.includes("Angle value must be less, than 90")?"":"Angle value must be less, than 90\n");
+							else
+							{
+								sT.alpha = Triangle["opposite angle"];
+								sT.beta = 90 - sT.alpha;
+								console.log(Triangle["opposite angle"]);
+							}
+							if(sT.alpha != undefined && sT.beta != undefined)solved = true;
+							console.log(sT);
+							sT.c = laToHypotenuse(sT.a, sT.alpha);
+							sT.b = Math.sqrt(sT.c*sT.c - sT.a*sT.a);
+						}
+						if(Triangle["hypotenuse"] != undefined && Triangle["angle"] != undefined){
+							sT.c = Triangle["hypotenuse"];
+							if(Triangle["angle"] >= 90)error += "Angle value must be less, than 90\n";
+							else
+							{
+								sT.alpha = Triangle["angle"];
+								sT.beta = 90 - sT.alpha;
+								sT.a = sT.c * Math.sin(degToRad(sT.alpha));
+								sT.b = sT.c * Math.sin(degToRad(sT.beta));
+								solved = true;
+							}
+						}
+					}
+				}
+				if(solved)logTriangle(sT);
+				else console.log((error.length>1?error:"Some uncaught error\n")+"failure")
+			};			
+		</script>		
+	</body>
+</html>
