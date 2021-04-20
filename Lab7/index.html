@@ -8,14 +8,11 @@
 	<body>
 		<script>
 			function triangle(){
-				var degToRad = (deg) => deg*Math.PI/180;
-				var radToDeg = (rad) => rad*180/Math.PI;
+				var degToRad = deg => deg*Math.PI/180;
+				var radToDeg = rad => rad*180/Math.PI;
 				var lhToAngle = (l, h) => radToDeg(Math.asin(l/h));
 				var laToHypotenuse = (l, a) => l/(Math.sin(degToRad(a)));
-				function logTriangle(T){
-					console.log("a = " + T.a.toFixed(3) + "\nb = " + T.b.toFixed(3) + "\nc = "+ T.c.toFixed(3) + "\nalpha = " + T.alpha.toFixed(3) + "\nbeta = " + T.beta.toFixed(3));
-					console.log("succes");
-				}
+				var logTriangle = T => console.log("a = " + T.a.toFixed(3) + "\nb = " + T.b.toFixed(3) + "\nc = "+ T.c.toFixed(3) + "\nalpha = " + T.alpha.toFixed(3) + "\nbeta = " + T.beta.toFixed(3) + "\nsucces");
 				var trig = ["leg", "hypotenuse", "adjacent angle", "opposite angle", "angle"];
 				var Triangle = {leg:undefined, hypotenuse:undefined, "adjacent angle":undefined, "opposite angle":undefined, "angle":undefined};
 				var sT = {a:undefined, b:undefined, c:undefined, alpha:undefined, beta:undefined};
