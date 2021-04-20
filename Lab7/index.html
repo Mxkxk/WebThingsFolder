@@ -79,10 +79,8 @@
 							{
 								sT.alpha = Triangle["opposite angle"];
 								sT.beta = 90 - sT.alpha;
-								console.log(Triangle["opposite angle"]);
 							}
 							if(sT.alpha != undefined && sT.beta != undefined)solved = true;
-							console.log(sT);
 							sT.c = laToHypotenuse(sT.a, sT.alpha);
 							sT.b = Math.sqrt(sT.c*sT.c - sT.a*sT.a);
 						}
@@ -102,7 +100,17 @@
 				}
 				if(solved)logTriangle(sT);
 				else console.log((error.length>1?error:"Some uncaught error\n")+"failure")
-			};			
+			};
+			function logInstruction(){
+				console.log("Use function triangle() for solving right triangle\nInput two pairs of number value and string type\nFunction use 5 types: leg, hypotenuse, adjacent angle, opposite angle and angle\nIf u input all data correct - u will get result log, otherwise error with description");
+			};
+			function logExample(){
+				var s = "Example of function: triangle(" + arguments[0] + ", \"" + arguments[1] + "\", " + arguments[2] + ", \"" + arguments[3] + "\")";
+				console.log(s);
+				triangle(arguments[0], arguments[1], arguments[2], arguments[3]);
+			};
+			logInstruction();
+			logExample(2, "leg", 30, "opposite angle");
 		</script>		
 	</body>
 </html>
