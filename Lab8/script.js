@@ -7,19 +7,15 @@ script.charCodePower = function (name){
 	return sum;
 };
 
-(function(){
-	for (var i = 0; i < script.names.length; i++) {
-	  if (script.names[i].toLowerCase()[0] == "j") {
-	    SpeakGoodBye.speak(script.names[i]);
-	  } else {
-	    SpeakHello.speak(script.names[i]);
-	  }
-	}
-})();
+for (var i = 0; i < script.names.length; i++) {
+  if (script.names[i].toLowerCase()[0] == "j") {
+    SpeakGoodBye.speak(script.names[i]);
+  } else {
+    SpeakHello.speak(script.names[i]);
+  }
+}
 console.log("There used surname array for comparation sums of char codes with some value:");
-(function(){
-	for (var i = 0; i < script.surnames.length; i++) {		
-		if(script.charCodePower(script.surnames[i]) > 600)SpeakGoodBye.power(script.surnames[i]);
-		else SpeakHello.power(script.surnames[i]);
-	}
-})();
+for (var i = 0; i < script.surnames.length; i++) {		
+	if(script.charCodePower(script.surnames[i]) > 600)SpeakGoodBye.power(script.surnames[i]);
+	else SpeakHello.power(script.surnames[i]);
+}
