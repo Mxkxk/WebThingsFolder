@@ -1,4 +1,4 @@
-var SpeakGoodBye = (function(){
+var SpeakGoodBye = {
 	speakWord: "Good Bye",
 	speak: function speak(name) {
 	 	console.log(SpeakGoodBye.speakWord + " " + name);
@@ -6,4 +6,4 @@ var SpeakGoodBye = (function(){
 	power: function power(name) {
 	 	console.log(name + " has enough power");
 	}
-})();
+}
