@@ -1,13 +1,11 @@
-var SpeakHello = (function(){
-	const speakWord = "Hello"
-	function speak(name) {		
+(function(global){
+	var SpeakHello = {};
+	const speakWord = "Hello";
+	SpeakHello.speak = function(name) {		
  		console.log(speakWord + " " + name);
- 	}
- 	function power(name) {
+ 	};
+ 	SpeakHello.power = function(name) {
 	 	console.log(name + " hasn`t enough power");	 	
-	}
-	return {		
-	 	speak : speak,
-	 	power : power
-	}
-})();
+	};
+	global.SpeakHello = SpeakHello;
+})(window);

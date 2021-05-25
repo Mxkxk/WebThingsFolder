@@ -1,13 +1,11 @@
-var SpeakGoodBye = (function(){
-	const speakWord = "Good Bye"
-	function speak(name) {
+(function(global){
+	var SpeakGoodBye = {};
+	const speakWord = "Good Bye";
+	SpeakGoodBye.speak = function (name) {
 	 	console.log(speakWord + " " + name);
-	}
-	function power(name) {
+	};
+	SpeakGoodBye.power = function (name) {
 	 	console.log(name + " has enough power");
-	}
-	return{
-		speak : speak,
-		power : power		
-	}	
-})();
+	};
+	global.SpeakGoodBye = SpeakGoodBye;
+})(window);
