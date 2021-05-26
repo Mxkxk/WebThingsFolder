@@ -1,11 +1,14 @@
-
 (function(global){
 	var mySite = {};
 	
 	var homeHtml = "snippets/home-snippet.html";
 	var allCategoriesUrl = "data/categories.json";
+	var ammountOfCategories = 0;
 	var categoriesTitleHtml = "snippets/category-title-snippet.html";
 	var categoryHtml = "snippets/category-snippet.html";
+	var catalogItemsUrl = "categories/";
+	var catalogItemsTitleHtml = "snippets/catalog-item-title.html";
+	var catalogItemsHtml = "snippets/catalog-item.html";
 
 	var insertHtml = function(selector, html){
 		var inner = document.querySelector(selector);
@@ -34,6 +37,21 @@
 			}, false);
 	});
 
+	var loadCatalogItems = function(categoryShort){
+		showLoading("#main-content");
+		if(categoryShort != undefined)
+			$ajaxUtil.sendGetRequest(catalogItemsUrl + categoryShort + ".json",
+					buildAndShowCatalogItemsHTML);
+		else {
+			$ajaxUtil.sendGetRequest(allCategoriesUrl,
+					function(categories){
+						$ajaxUtil.sendGetRequest(catalogItemsUrl + categories[getRandom(categories.length)].shortname + ".json",
+					buildAndShowCatalogItemsHTML);
+					});
+		}
+	}
+
+	mySite.loadCatalogItems = loadCatalogItems;
 
 	var loadCatalogCategories = function(){
 		showLoading("#main-content");		
@@ -77,11 +95,51 @@
 
 		finalHtml += '</section>';
 		return finalHtml;
-	}	
+	};
+
+	function buildAndShowCatalogItemsHTML (categoryCatalogItems){
+		$ajaxUtil.sendGetRequest(
+			catalogItemsTitleHtml,
+			function (catalogItemsTitleHtml){
+				$ajaxUtil.sendGetRequest(
+					catalogItemsHtml,
+					function(catalogItemHtml){
+						var catalogItemsViewHtml = buildCatalogItemsViewHtml(categoryCatalogItems,
+							catalogItemsTitleHtml,
+							catalogItemHtml);
+						insertHtml("#main-content", catalogItemsViewHtml);
+					}, false);			
+		}, false);
+	};
+
+	function buildCatalogItemsViewHtml(categoryCatalogItems, catalogItemsTitleHtml, catalogItemHtml){
+		catalogItemsTitleHtml = insertProperty(catalogItemsTitleHtml, "name", categoryCatalogItems.category.name);
+		catalogItemsTitleHtml = insertProperty(catalogItemsTitleHtml, "special_instruction", categoryCatalogItems.category.special_instruction);
+		var finalHtml = catalogItemsTitleHtml;		
+		finalHtml += '<section class="row">';
+
+		var catalogItems = categoryCatalogItems.catalog_items;
+		var catalogShortName = categoryCatalogItems.category.catalog_items;
+
+		for(var i = 0; i < catalogItems.length; i ++){
+			var html = catalogItemHtml;
+			html = insertProperty(html, "short_name", catalogItems[i].shortname);
+			////html = insertProperty(html, "short_name", catalogItems[i].category.shortname);
+			html = insertProperty(html, "price", catalogItems[i].price);
+			html = insertProperty(html, "ammount_retail", catalogItems[i].price);
+			html = insertProperty(html, "name", catalogItems[i].name);
+			html = insertProperty(html, "description", catalogItems[i].description);
+			finalHtml += html;
+		}
+
+		finalHtml += "</section>";
+
+		return finalHtml;
+	}
 
 	var getRandom = function(max){//x = {x є N && x <= max}
-		return (Math.round(Math.random()*(max-1))+1);		
-	}
+		return (Math.round(Math.random()*(max-1)));		
+	};
 
 	mySite.getRandom = getRandom;
 
