@@ -126,7 +126,7 @@
 			html = insertProperty(html, "short_name", catalogItems[i].shortname);
 			////html = insertProperty(html, "short_name", catalogItems[i].category.shortname);
 			html = insertProperty(html, "price", catalogItems[i].price);
-			html = insertProperty(html, "ammount_retail", catalogItems[i].price);
+			html = insertProperty(html, "ammount_retail", (catalogItems[i].ammount_retail == null)? 0 : catalogItems[i].ammount_retail);
 			html = insertProperty(html, "name", catalogItems[i].name);
 			html = insertProperty(html, "description", catalogItems[i].description);
 			finalHtml += html;
