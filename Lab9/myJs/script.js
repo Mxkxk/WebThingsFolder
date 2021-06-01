@@ -137,7 +137,7 @@
 		return finalHtml;
 	}
 
-	var getRandom = function(max){//x = {x є N && x <= max}
+	var getRandom = function(max){//x = {x є Z && x < max}
 		return (Math.round(Math.random()*(max-1)));		
 	};
 
@@ -145,5 +145,3 @@
 
 	global.$mySite = mySite;
 })(window);
-
-//window.$mySite.insertHtml(".navbar-brand", '<h2>Logo</h2>');
